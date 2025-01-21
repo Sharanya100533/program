@@ -1,18 +1,28 @@
-function Student(name,grade){
-    this.name = name;
-    this.grade = grade;
-    this.study = function study(){
-        console.log("Btech 3rd year");
-    }
-    this.getGrade = function getGrade(){
-        console.log("Your grade is "+this.grade);
-    }
-}
+function fetchDataWithCallback(success, callback) {
+    setTimeout(() => {
+      if (success) {
+        callback(null, "Data fetched successfully!");
+      } else {
+        callback("Error fetching data", null);
+      }
+    }, 2000); 
+  }
+  
 
-let obj = new Student("Sana",9.41);
-obj.study();
-obj.getGrade();
+  fetchDataWithCallback(true, (error, data) => {
+    if (error) {
+      console.log("Error:", error);
+    } else {
+      console.log("Success:", data); 
+    }
+  });
+  
 
-let Myobj = new Student("Shreya",9.3);
-Myobj.study();
-Myobj.getGrade();
+  fetchDataWithCallback(false, (error, data) => {
+    if (error) {
+      console.log("Error:", error);  
+    } else {
+      console.log("Success:", data);
+    }
+  });
+  
