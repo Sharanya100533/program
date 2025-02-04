@@ -1,19 +1,11 @@
-function multiply(num,callback){
-    callback(num*2);
-}
-function subtract(num,callback){
-    callback(num-3);
-}
-function add(num,callback){
-    callback(num+10);
-}
-function operation(num){
-    multiply(num,result1=>{
-        subtract(result1,result2=>{
-            add(result2,result3=>{
-                console.log(result3);
-            });
-        });
-    });
-}
-operation(3);
+const EventEmitter = require('events');
+const eventEmitter = new EventEmitter();
+
+
+eventEmitter.on('userDetails', (name, age) => {
+    console.log(`Hello, ${name}! You are ${age} years old.`);
+});
+
+
+eventEmitter.emit('userDetails', 'John', 30);
+eventEmitter.emit('userDetails', 'Alice', 25);
